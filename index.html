@@ -1,11 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Lysne Preview</title>
-</head>
-<body>
-  <h1>Hello, Lysne!</h1>
-  <p>This is your GitHub Pages preview.</p>
-</body>
-</html>
+<style>
+:root {
+  --header-height: 96px;
+  --header-height-sticky: 72px;
+  --header-bg: rgba(0,0,0,0);
+  --header-bg-sticky: #fff;
+  --header-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  --logo-height: 64px;
+  --logo-height-sticky: 48px;
+  --menu-link: #fff;
+  --menu-link-hover: #ffd700;
+  --menu-font: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.site-header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 9999;
+  background: var(--header-bg);
+  box-shadow: none;
+  transition: background 0.3s, box-shadow 0.3s, height 0.3s;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  font-family: var(--menu-font);
+  box-sizing: border-box;
+}
+
+.site-header .logo img {
+  height: var(--logo-height);
+  max-height: 90px;
+  transition: height 0.3s;
+  display: block;
+}
+
+.site-header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.site-header nav ul li {
+  margin: 0 24px;
+}
+.site-header nav ul li a {
+  color: var(--menu-link);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.18rem;
+  letter-spacing: 0.02em;
+  padding: 10px 0;
+  transition: color 0.2s;
+}
+.site-header nav ul li a:hover,
+.site-header nav ul li a:focus {
+  color: var(--menu-link-hover);
+  outline: none;
+}
+
+.site-header.sticky {
+  background: var(--header-bg-sticky);
+  box-shadow: var(--header-shadow);
+  height: var(--header-height-sticky);
+}
+.site-header.sticky nav ul li a {
+  color: #222;
+}
+.site-header.sticky nav ul li a:hover,
+.site-header.sticky nav ul li a:focus {
+  color: #0078d4;
+}
+.site-header.sticky .logo img {
+  height: var(--logo-height-sticky);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .site-header {
+    padding: 0 20px;
+  }
+  .site-header nav ul li {
+    margin: 0 16px;
+  }
+}
+@media (max-width: 700px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 12px 8px;
+  }
+  .site-header.sticky {
+    height: auto;
+  }
+  .site-header nav {
+    margin-top: 10px;
+    width: 100%;
+  }
+  .site-header nav ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+  .site-header nav ul li {
+    margin: 8px 0;
+  }
+  .site-header nav ul li a {
+    font-size: 1.08rem;
+    padding: 10px 0;
+  }
+}
+
+/* Accessibility: focus outline */
+.site-header nav ul li a:focus-visible {
+  outline: 2px solid #ffd700;
+  outline-offset: 2px;
+}
+</style>
+
+<header class="site-header" id="mainHeader" role="banner">
+  <div class="logo">
+    <a href="/">
+      <img src="https://o18d0g81wo.onrocket.site/wp-content/uploads/2025/08/250x150-white.svg" alt="Your Site Logo" />
+    </a>
+  </div>
+  <nav aria-label="Primary">
+    <ul>
+      <li><a href="/">Homepage</a></li>
+      <li><a href="/properties">Properties</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/valuation">Request a Valuation</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+// Sticky Header JS
+window.addEventListener('scroll', function() {
+  var header = document.getElementById('mainHeader');
+  if(window.scrollY > 40){
+    header.classList.add('sticky');
+  } else {
+    header.classList.remove('sticky');
+  }
+});
+</script>
