@@ -12,8 +12,9 @@
       --header-bg: rgba(255,255,255,0.5);
       --header-bg-sticky: rgba(30, 51, 89, 0.98);
       --header-shadow: 0 2px 16px rgba(0,0,0,0.12);
-      --logo-height: 40px;
-      --logo-height-sticky: 28px;
+      --logo-height: 48px;            /* increased logo height */
+      --logo-height-sticky: 34px;     /* increased sticky logo height */
+      --logo-max-width: 200px;        /* increased max width */
       --menu-link: #222;
       --menu-link-hover: #0078d4;
       --menu-font: 'Montserrat', 'Segoe UI', Arial, sans-serif;
@@ -44,11 +45,10 @@
     }
     .site-header .logo img {
       height: var(--logo-height);
-      transition: height 0.3s;
+      transition: height 0.3s, max-width 0.3s;
       display: block;
       filter: drop-shadow(0 0 2px #fff);
-      max-width: 140px;
-      max-height: 40px;
+      max-width: var(--logo-max-width); /* larger logo width */
       width: auto;
     }
     .site-header nav {
@@ -118,7 +118,7 @@
     }
     .site-header.sticky .logo img {
       height: var(--logo-height-sticky);
-      max-height: 28px;
+      max-width: 130px;
       filter: drop-shadow(0 0 2px #222);
     }
     .site-header.sticky nav ul li a {
@@ -150,6 +150,9 @@
         padding: 8px 14px;
         font-size: 0.98rem;
       }
+      .site-header .logo img {
+        max-width: 130px;
+      }
     }
     @media (max-width: 600px) {
       .site-header, .site-header.sticky {
@@ -160,7 +163,7 @@
       }
       .site-header .logo img {
         height: 24px;
-        max-height: 24px;
+        max-width: 80px;
       }
       .site-header nav {
         width: 100%;
@@ -186,9 +189,8 @@
       outline: 2px solid #ffd700;
       outline-offset: 2px;
     }
-    /* Hero for demo */
     .hero {
-      background: #254b7c; /* Plain blue background, no logo image */
+      background: #254b7c;
       height: 400px;
       color: #fff;
       display: flex;
